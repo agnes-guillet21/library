@@ -1,0 +1,21 @@
+
+** Exception **
+
+A reflechir dans la classe Bookservice : est ce que les methodes ont besoin d un try-catch
+du coup dans le controller  est ce que je maintiens le try catch de l exception " exception"
+=> fait  pour la methode update
+
+
+
+** Test Unitaire **
+
+ecrire des tests unitaire pour chaque methode de Book service en s appuyant sur le test du controller
+
+
+****************************************************************
+
+Methode dans le book service/controller
+
+=> comment creer une pagede detail : id ?
+
+=>methode find by title : on trouve le livre par le nom et si on clique sur le livre => renvoie page de detail du livre
