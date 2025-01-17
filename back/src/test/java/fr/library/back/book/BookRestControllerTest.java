@@ -1,6 +1,7 @@
 package fr.library.back.book;
 
 
+import lombok.experimental.StandardException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -31,15 +32,17 @@ class BookRestControllerTest {
         mockMvc .perform(MockMvcRequestBuilders.get("/books"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 //                .andExpect(MockMvcResultMatchers.jsonPath("$.bookId").exists());
-
         }
-
 
     @Test
     public void testUpdateBook() throws Exception {
         mockMvc .perform(MockMvcRequestBuilders.get("/update-book"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
-        // test si le content est bon ?
+    }
+    //test update si ca se passe mal
+    @Test
+    public void testIfUpdateBookFailed(){
+
     }
 
     @Test
@@ -47,4 +50,4 @@ class BookRestControllerTest {
         mockMvc .perform(MockMvcRequestBuilders.get("/remove-books"));
         // tester si la suppression se fait
     }
-    }
+}

@@ -1,3 +1,4 @@
+
 package fr.library.back.book;
 
 import jakarta.persistence.Entity;
@@ -23,6 +24,5 @@ public class BookEntity {
     private String description;
     private String author;
     private Integer isbn;
-    // rajouter un isbn
 
 }

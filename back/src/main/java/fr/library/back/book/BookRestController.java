@@ -53,13 +53,14 @@ public class BookRestController implements LibraryRestController<BookDto> {
      * @return a new book dto
      */
     @PostMapping("/create-book")
-    public ResponseEntity<BookDto> create(BookDto bookDto) {
+    public ResponseEntity<BookDto> create(@RequestBody BookDto bookDto) {
+        BookDto result;
         try{
-            bookService.createBook(bookDto);
+            result = bookService.createBook(bookDto);
         }catch (Exception e){
-            return new ResponseEntity<BookDto>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<BookDto>(bookDto, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     /**
@@ -81,8 +82,8 @@ public class BookRestController implements LibraryRestController<BookDto> {
      * Find one Book by ID
      * @return bookDto
      */
-    @GetMapping("/book")
-    public ResponseEntity<BookDto> findById(Integer id){
+    @GetMapping("/book/{id}")
+    public ResponseEntity<BookDto> getById(@PathVariable Integer id){
         BookDto bookDto;
         try{
           bookDto = bookService.findBookById(id);
@@ -96,18 +97,19 @@ public class BookRestController implements LibraryRestController<BookDto> {
      * Find book by title
      * @return book Dto
      */
-    public ResponseEntity <BookDto> findByTitle(String title){
+    public ResponseEntity <BookDto> getByTitle(String title){
         BookDto bookDto;
-        bookDto = bookService.findBookByTitle(title);
+        bookDto = bookService.getBookByTitle(title);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     /**
      * Find book by isbn
      * @return book Dto
      */
-    public ResponseEntity <BookDto> findByIsbn(Integer isbn){
+    @GetMapping("/book/isbn/{isbn}")
+    public ResponseEntity <BookDto> getByIsbn(@PathVariable Integer isbn){
         BookDto bookDto;
-        bookDto = bookService.findBookByIsbn(isbn);
+        bookDto = bookService.getBookByIsbn(isbn);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
