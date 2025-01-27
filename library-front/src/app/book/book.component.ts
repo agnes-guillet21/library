@@ -1,23 +1,25 @@
-import { Book } from './../models/book';
-import { Component, Input, OnInit } from '@angular/core';
-@Component({
-  selector: 'app-book',
-  standalone: true,
-  imports: [],
-  templateUrl: './book.component.html',
-  styleUrl: './book.component.scss'
-})
-export class BookComponent implements OnInit {
-  @Input({required:true}) book!: Book;
-  // @input : le parent qui le fourni a lenfant . Il peut l utiliser mais si l enfant effectue des changement
-  // le parents le saura
+  import { Router } from '@angular/router';
+  import { BookService } from '../services/book.service';
+  import { Book } from './../models/book';
+  import { Component, inject, Input, OnInit } from '@angular/core';
+  @Component({
+    selector: 'app-book',
+    standalone: true,
+    imports: [],
+    templateUrl: './book.component.html',
+    styleUrl: './book.component.scss'
+  })
+  export class BookComponent implements OnInit {
+    private bookService = inject(BookService);
+    private router = inject(Router);
+    @Input({required:true}) book!: Book;
 
-   // constructor(private bookService: BookService) {}
-    //books$!: Observable <BookComponent[]>;
 
-  ngOnInit(): void {
-  //this.books$ = this.bookService.getAllBooks();
+      onViewBook(){
+        this.router.navigateByUrl(`books/${this.book.id}`)
+      }
 
+    ngOnInit(): void {
+    //this.books$ = this.bookService.getAllBooks();
+    }
   }
-
-}
