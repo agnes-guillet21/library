@@ -1,4 +1,4 @@
-<div class="book-card">
+<div class="book-card" *ngIf= "books$ | async as book">
   <h2>{{ book.title }}</h2>
   <p>{{ book.description }}</p>
   <p>Livre ecrit par: {{ book.author }}</p>

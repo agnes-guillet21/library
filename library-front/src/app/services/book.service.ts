@@ -9,47 +9,15 @@ import { Observable } from "rxjs";
 })
 
 export class BookService {
-constructor(private http : HttpClient){}
 
-
-
-  private books: Book[]= [
-    new Book(
-      "Mon super livre",
-      "c'est un super livre",
-      "super auteur",
-      1
-    ),
-    new Book(
-      "un autre super livre",
-      "c'est un autre super livre",
-      " un autre super auteur",
-      2
-    ),
-    new Book(
-      "Mon super livre",
-      "c'est un super livre",
-      "un auteur",
-      3
-    ),
-
-  ];
-/*
-  getBooks(): Book[]{
-    return [...this.books];
-  }*/
+  constructor(private http : HttpClient){}
 
   getBooks(): Observable<Book[]>{
     return this.http.get<Book[]>('http://localhost:9000/books');
   }
 
-
-  getBookById(bookId : string): Book {
-    const foundBook: Book | undefined = this.books.find((book: Book) => book.id === bookId);
-    if (!foundBook){
-      throw new Error('Book not find');
-    }
-    return foundBook;
+  getBookById(bookId : number): Observable<Book> {
+    return this.http.get<Book>(`http://localhost:9000/books/${bookId}`);
   }
 
 }

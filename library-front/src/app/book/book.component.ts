@@ -20,6 +20,5 @@
       }
 
     ngOnInit(): void {
-    //this.books$ = this.bookService.getAllBooks();
     }
   }

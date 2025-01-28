@@ -1,11 +1,17 @@
+
 import { Book } from '../models/book';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { BookService } from '../services/book.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AsyncPipe, CommonModule } from '@angular/common';
 @Component({
   selector: 'app-single-book',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    RouterLink
+  ],
   templateUrl: './single-book.component.html',
   styleUrl: './single-book.component.scss'
 })
@@ -14,26 +20,12 @@ export class SingleBookComponent implements OnInit {
   private bookService = inject(BookService);
   private route = inject(ActivatedRoute);
 
- book!: Book;
-
-    //books$!: Observable <BookComponent[]>;
+  books$!: Observable<Book>;
 
   ngOnInit(): void {
-      //this.getBook();
 
-  //this.books$ = this.bookService.getAllBooks();
+  const bookId = +this.route.snapshot.params['id'];
+  this.books$ = this.bookService.getBookById(bookId);
+
     }
-
-/*
-  private getBook() {
-    const bookId = this.route.snapshot.params['id'];
-    try {
-      this.book = this.bookService.getBookById(bookId);
-    } catch (e) {
-      this.router.navigate(['/books']);
-    }
-  }
-*/
-
-
 }
