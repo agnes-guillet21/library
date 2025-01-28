@@ -82,7 +82,7 @@ public class BookRestController implements LibraryRestController<BookDto> {
      * Find one Book by ID
      * @return bookDto
      */
-    @GetMapping("/book/{id}")
+    @GetMapping("/books/{id}")
     public ResponseEntity<BookDto> getById(@PathVariable Integer id){
         BookDto bookDto;
         try{
