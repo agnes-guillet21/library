@@ -45,6 +45,15 @@ public class BookService {
     }
 
     /**
+     *
+     * @param id
+     * @return : void
+     */
+    public void deleteBook(Integer id) {
+        bookDao.deleteById(id);
+    }
+
+    /**
      * @param bookDto
      * @return BookDto : object for front
      */

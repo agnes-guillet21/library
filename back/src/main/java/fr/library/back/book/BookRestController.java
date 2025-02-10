@@ -2,6 +2,7 @@ package fr.library.back.book;
 
 import fr.library.back.LibraryRestController;
 import fr.library.back.exception.LibraryException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,16 +12,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/books")
+@RequiredArgsConstructor
 public class BookRestController implements LibraryRestController<BookDto> {
 
-    @Autowired
-    private BookService bookService;
+    private final BookService bookService;
 
     /**
      * Read - Get all books
      * @return - An Iterable object of Book full filled
      */
-    @GetMapping("/books")
+    @GetMapping()
     public ResponseEntity<Iterable<BookDto>> getAll() {
         List<BookDto> allBooks = new ArrayList<>();
         try {
@@ -36,7 +38,7 @@ public class BookRestController implements LibraryRestController<BookDto> {
      * Delete All Book
      * @return no return
      */
-    @DeleteMapping("/remove-books")
+    @DeleteMapping()
     public ResponseEntity<Void> deleteAll() {
         try {
             List<BookDto> allBooksDto = bookService.getBooks();
@@ -46,13 +48,25 @@ public class BookRestController implements LibraryRestController<BookDto> {
         }
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
-
+    /**
+     * Delete one Book
+     * @return no return
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        try {
+            bookService.deleteBook(id);
+        }catch (Exception e){
+            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
     /**
      * Create book
      * @param bookDto
      * @return a new book dto
      */
-    @PostMapping("/create-book")
+    @PostMapping()
     public ResponseEntity<BookDto> create(@RequestBody BookDto bookDto) {
         BookDto result;
         try{
@@ -68,8 +82,8 @@ public class BookRestController implements LibraryRestController<BookDto> {
      * @param bookDto
      * @return updating book dto
      */
-    @PutMapping("/update-book")
-    public ResponseEntity<BookDto> update(BookDto bookDto) {
+    @PutMapping()
+    public ResponseEntity<BookDto> update(@RequestBody BookDto bookDto) {
         try{
             bookService.updateBook(bookDto);
         }catch (LibraryException e){
@@ -82,7 +96,7 @@ public class BookRestController implements LibraryRestController<BookDto> {
      * Find one Book by ID
      * @return bookDto
      */
-    @GetMapping("/books/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<BookDto> getById(@PathVariable Integer id){
         BookDto bookDto;
         try{
@@ -106,7 +120,7 @@ public class BookRestController implements LibraryRestController<BookDto> {
      * Find book by isbn
      * @return book Dto
      */
-    @GetMapping("/book/isbn/{isbn}")
+    @GetMapping("/isbn/{isbn}")
     public ResponseEntity <BookDto> getByIsbn(@PathVariable Integer isbn){
         BookDto bookDto;
         bookDto = bookService.getBookByIsbn(isbn);
