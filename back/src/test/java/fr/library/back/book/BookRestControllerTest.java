@@ -13,6 +13,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.List;
+
 @WebMvcTest(controllers = BookRestController.class)
 class BookRestControllerTest {
 
@@ -30,24 +32,37 @@ class BookRestControllerTest {
     @Test
     public void testGetBooks() throws Exception {
         mockMvc .perform(MockMvcRequestBuilders.get("/books"))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.bookId").exists());
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.bookId").exists());
         }
 
     @Test
     public void testUpdateBook() throws Exception {
-        mockMvc .perform(MockMvcRequestBuilders.get("/update-book"))
+        mockMvc .perform(MockMvcRequestBuilders.put("/books"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
+    @Test
+    public void testAddBook() throws Exception {
+        mockMvc .perform((MockMvcRequestBuilders.post("/books")))
+                .andExpect((MockMvcResultMatchers.status().isOk()));
+    }
+
+    @Test
+    public void testDeleteBook() throws Exception {
+        mockMvc .perform(MockMvcRequestBuilders.delete("/books"))
+           .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
     //test update si ca se passe mal
     @Test
     public void testIfUpdateBookFailed(){
 
     }
 
+    // test if get empty field when post request
     @Test
-    public void testDeleteBook () throws Exception {
-        mockMvc .perform(MockMvcRequestBuilders.get("/remove-books"));
-        // tester si la suppression se fait
+    public void testIfEmptyField() throws Exception {
+        mockMvc .perform((MockMvcRequestBuilders.post("/books")));
     }
 }
