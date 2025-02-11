@@ -1,6 +1,6 @@
   import { Router } from '@angular/router';
-  import { BookService } from '../services/book.service';
-  import { Book } from './../models/book';
+  import { BookService } from '../../services/book.service';
+  import { Book } from '../../models/book';
   import { Component, inject, Input, OnInit } from '@angular/core';
   @Component({
     selector: 'app-book',

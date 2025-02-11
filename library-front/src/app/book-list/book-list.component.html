@@ -1,5 +1,0 @@
-@for(bookElement of (books$| async) ; track bookElement.title) {
-  <app-book [book]="bookElement"></app-book>
-} @empty {
-There are no items.
-}
