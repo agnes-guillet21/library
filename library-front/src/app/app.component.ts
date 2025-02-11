@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Book } from './models/book';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './home-component/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './home-component/footer/footer.component';
 
 @Component({
   selector: 'app-root',
