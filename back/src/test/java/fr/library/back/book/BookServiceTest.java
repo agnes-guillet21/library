@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.awt.print.Book;
 import java.util.Optional;
 
 class BookServiceTest {
@@ -42,7 +41,7 @@ class BookServiceTest {
     }
 
 //
-//    //test findbookbytitle
+//    //test findbookbyIsbn
 //    @Test
 //    void findByIsbnTest() throws LibraryException{
 //        //given
@@ -50,6 +49,20 @@ class BookServiceTest {
 //
 //        //when
 //        var result = this.bookService.findBookByIsbn(1);
+//
+//        //then
+//        Assertions.assertNotNull(result);
+//        Assertions.assertEquals(1, result.getId(), result.getTitle());
+//    }
+//
+//    //test findbookbyIsbn
+//    @Test
+//    void findByIsbnTitle() throws LibraryException{
+//        //given
+//        Mockito.when(bookDao.findByTitle(Mockito.anyString()));
+//
+//        //when
+//        var result = this.bookService.findBookByTitle("rebelle");
 //
 //        //then
 //        Assertions.assertNotNull(result);

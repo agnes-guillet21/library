@@ -113,7 +113,7 @@ public class BookRestController implements LibraryRestController<BookDto> {
      */
     public ResponseEntity <BookDto> getByTitle(String title){
         BookDto bookDto;
-        bookDto = bookService.getBookByTitle(title);
+        bookDto = bookService.findBookByTitle(title);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     /**
@@ -123,7 +123,7 @@ public class BookRestController implements LibraryRestController<BookDto> {
     @GetMapping("/isbn/{isbn}")
     public ResponseEntity <BookDto> getByIsbn(@PathVariable Integer isbn){
         BookDto bookDto;
-        bookDto = bookService.getBookByIsbn(isbn);
+        bookDto = bookService.findBookByIsbn(isbn);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

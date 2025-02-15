@@ -2,36 +2,27 @@ package fr.library.back.book;
 
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.awt.print.Book;
 import java.util.List;
 
+@DataJpaTest
 public class BookDaoTest {
 
-
     @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
     private BookDao bookDao;
-
-    @BeforeEach
-    void init() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
     public void testAddBook(){
         BookEntity book = new BookEntity(44,"un lire parmis tant d'autres", "une description", "un auteur", 55);
+
         BookEntity savedBook = bookDao.save(book);
-       Assertions.assertNotNull(savedBook);
-        Assertions.assertEquals("un lire parmis tant d'autres", savedBook.getTitle());
+
+        Assertions.assertNotNull(savedBook);
+        Assertions.assertEquals("un lire parmis tant d'autres", book.getTitle());
+
     }
 
     @Test
