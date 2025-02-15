@@ -89,7 +89,7 @@ public class BookService {
      * Methode findBookByTitle
      * @return  one object  for front
      */
-    public BookDto getBookByTitle(String title){
+    public BookDto findBookByTitle(String title){
         BookDto bookDto = null;
         BookEntity bookEntity = bookDao.findByTitle(title);
         bookDto = BookMapper.map(bookEntity);
@@ -100,7 +100,7 @@ public class BookService {
      * findBookByIsbn
      * @return one object identify by isbn
      */
-    public BookDto getBookByIsbn( Integer isbn){
+    public BookDto findBookByIsbn( Integer isbn){
         BookDto bookDto = null;
         BookEntity bookEntity =bookDao.findByIsbn(isbn);
         bookDto = BookMapper.map(bookEntity);
