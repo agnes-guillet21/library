@@ -28,10 +28,7 @@ public class BookService {
     public List<BookDto> getBooks() {
         List<BookDto> bookDtos = new ArrayList<>();
         List<BookEntity> bookEntities = bookDao.findAll();
-        for (BookEntity bookEntity : bookEntities) {
-            bookDtos.add(BookMapper.map(bookEntity));
-        }
-        return bookDtos;
+        return BookMapper.mapEntities(bookEntities);
     }
 
     /**

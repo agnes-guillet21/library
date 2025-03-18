@@ -1,6 +1,7 @@
 package fr.library.back.book;
 
 import fr.library.back.exception.LibraryException;
+import fr.library.back.image.ImageEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,7 @@ class BookServiceTest {
     @Test
     void findByIdTest() throws LibraryException {
         //given
-        Mockito.when(bookDao.findById(Mockito.anyInt())).thenReturn(Optional.of(new BookEntity(42, "test", "test", "test", 55)));
+        Mockito.when(bookDao.findById(Mockito.anyInt())).thenReturn(Optional.of(new BookEntity(42, "test", "test", "test", 55, new ImageEntity())));
         //when
         var result = this.bookService.findBookById(42);
 

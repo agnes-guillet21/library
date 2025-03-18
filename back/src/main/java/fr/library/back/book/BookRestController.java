@@ -107,24 +107,4 @@ public class BookRestController implements LibraryRestController<BookDto> {
         return new ResponseEntity<>(bookDto, HttpStatus.OK);
     }
 
-    /**
-     * Find book by title
-     * @return book Dto
-     */
-    public ResponseEntity <BookDto> getByTitle(String title){
-        BookDto bookDto;
-        bookDto = bookService.findBookByTitle(title);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-    /**
-     * Find book by isbn
-     * @return book Dto
-     */
-    @GetMapping("/isbn/{isbn}")
-    public ResponseEntity <BookDto> getByIsbn(@PathVariable Integer isbn){
-        BookDto bookDto;
-        bookDto = bookService.findBookByIsbn(isbn);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
 }
