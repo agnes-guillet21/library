@@ -5,8 +5,7 @@
   margin: 20px auto;
   padding: 10px 30px;
   box-shadow: lightgray 4px 4px 20px;
-  border-radius: 3rem;
-
+  border-radius: 0.5rem;
 
   p {
     font-weight: 300;
@@ -18,6 +17,26 @@
     margin: 1rem;
   }
   &-button {
-    margin: 1rem;
+    background: transparent;
+    border: none;
+    color: #18534F;
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  &-btn-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  &-btn-effect{
+    inset: 0;
+    background: linear-gradient(45deg, #18534F, #226D68);
+    opacity: 0;
+    transition: all 0.3s ease;
   }
 }

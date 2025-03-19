@@ -23,6 +23,7 @@ export class BookService {
   }
 
   public createBook(datas: Book){
+    console.log(datas);
       this.http.post(BookConstants.getBooksApiEndpoint, datas)
       .subscribe();// ds le susb traiter l erreur
   }
@@ -31,6 +32,9 @@ export class BookService {
     this.http.put(BookConstants.getBooksApiEndpoint, datas)
     .subscribe();
    }
+
+
+
 // TODO  si la suppression ne se fait pas afficher un message utilisateur
    public deleteBook(bookId : number) : Promise<void> {
     const promise = new Promise<void>((resolve) =>{
