@@ -35,13 +35,10 @@ public class BookMapper {
         bookEntity.setId(bookDto.getId());
         bookEntity.setTitle(bookDto.getTitle());
         bookEntity.setDescription(bookDto.getDescription());
-//        bookEntity.setAuthor(bookDto.getAuthor());
+//       bookEntity.setAuthor(bookDto.getAuthor());
         bookEntity.setIsbn(bookDto.getIsbn());
-//        bookEntity.setImage(bookDto.getImage());
         if (bookDto.getImages() != null){
-            for (ImageEntity imageEntity : bookEntity.getImages()) {
-                imageEntities.add(imageEntity);
-            }
+           imageEntities = ImageMapper.mapDtos(bookDto.getImages()); // faire appel a image mapper pr recuperer des images entity
         }
         bookEntity .setImages(imageEntities);
     return bookEntity;
