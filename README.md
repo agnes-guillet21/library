@@ -34,7 +34,7 @@ Book -> Author : ManytoOne
 Creation des maquettes , intégration 
 
 ### Coté fonctionnel 
--> UsersStories : 
+-> UsersStories : <br>
 1 : En tant qu'administrateur de bibliothèque, j'ai besoin de pouvoir ajouter un nouveau livre, afin d'augmenter le nombre de livres dans le système.<br>
 2 : En tant qu'administrateur de bibliothèque, je dois pouvoir rechercher un livre par isbn ou par une partie ou la totalité de son titre, afin de visualiser toutes ses informations.<br>
 3 : En tant qu'administrateur de bibliothèque, je dois pouvoir rechercher un livre, puis le modifier ou le supprimer de la liste qui s'affiche.<br>
