@@ -20,14 +20,14 @@ export class SingleBookComponent implements OnInit {
   private bookService = inject(BookService);
   private route = inject(ActivatedRoute);
 
-  books$!: Observable<Book>;
+  book$!: Observable<Book>;
   public readonly bookId = +this.route.snapshot.params['id'];
 
 
   ngOnInit(): void {
 
   const bookId = +this.route.snapshot.params['id'];
-  this.books$ = this.bookService.getBookById(bookId);
+  this.book$ = this.bookService.getBookById(bookId);
 
 }
 
@@ -42,5 +42,6 @@ export class SingleBookComponent implements OnInit {
     });
 
   }
+  // Desouscrire a  l observable
 
 }

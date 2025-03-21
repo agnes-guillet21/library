@@ -1,6 +1,8 @@
 package fr.library.back.book;
 
+import fr.library.back.author.AuthorEntity;
 import fr.library.back.exception.LibraryException;
+import fr.library.back.image.ImageDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import java.util.Optional;
 public class BookService {
 
     private BookDao bookDao;
+    private AuthorEntity authorEntity;
     /**
      * Construct
      * @param bookDao
@@ -28,10 +31,7 @@ public class BookService {
     public List<BookDto> getBooks() {
         List<BookDto> bookDtos = new ArrayList<>();
         List<BookEntity> bookEntities = bookDao.findAll();
-        for (BookEntity bookEntity : bookEntities) {
-            bookDtos.add(BookMapper.map(bookEntity));
-        }
-        return bookDtos;
+        return BookMapper.mapEntities(bookEntities);
     }
 
     /**
@@ -58,7 +58,11 @@ public class BookService {
      * @return BookDto : object for front
      */
     public BookDto createBook(BookDto bookDto) {
+        /* tester l'ajout d'un livre avec une image */
+        /*A supprimer et faire la logique pour setter l auteur */
+        authorEntity =  new AuthorEntity(1, "chattam","maxime","francaise",null);
         BookEntity bookEntity = bookDao.save(BookMapper.map(bookDto));
+        bookEntity.setAuthor(authorEntity);
         return BookMapper.map(bookEntity);
     }
 
@@ -89,7 +93,7 @@ public class BookService {
      * Methode findBookByTitle
      * @return  one object  for front
      */
-    public BookDto getBookByTitle(String title){
+    public BookDto findBookByTitle(String title){
         BookDto bookDto = null;
         BookEntity bookEntity = bookDao.findByTitle(title);
         bookDto = BookMapper.map(bookEntity);
@@ -100,7 +104,7 @@ public class BookService {
      * findBookByIsbn
      * @return one object identify by isbn
      */
-    public BookDto getBookByIsbn( Integer isbn){
+    public BookDto findBookByIsbn( Integer isbn){
         BookDto bookDto = null;
         BookEntity bookEntity =bookDao.findByIsbn(isbn);
         bookDto = BookMapper.map(bookEntity);
