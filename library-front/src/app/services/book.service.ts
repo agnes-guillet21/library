@@ -23,8 +23,7 @@ export class BookService {
   }
 
   public createBook(datas: Book){
-    console.log(datas);
-      this.http.post(BookConstants.getBooksApiEndpoint, datas)
+    this.http.post(BookConstants.getBooksApiEndpoint, datas)
       .subscribe();// ds le susb traiter l erreur
   }
 

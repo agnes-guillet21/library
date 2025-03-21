@@ -38,8 +38,7 @@ export class BookFormComponent implements OnInit {
       description: [null],
       author: [null, Validators.required],
       isbn: [null, Validators.required],
-      image: [null],
-      imageBase64: [null]
+      images: [],
     });
 
     this.newBook$ = this.bookForm.valueChanges.pipe(
@@ -58,7 +57,6 @@ export class BookFormComponent implements OnInit {
 
   onSubmitForm(): void{
     const datasBook = this.bookForm.value;
-    console.log(datasBook);
     if(!!this.bookId){
       datasBook.id = this.bookId;
       this.updateBook(datasBook);
@@ -70,12 +68,10 @@ export class BookFormComponent implements OnInit {
 
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
-
     if (input.files && input.files.length > 0) {
       const file = input.files[0];  // Récupérer le fichier sélectionné
       this.convertFileToBase64(file).then((base64: string) => {
-
-        this.bookForm.patchValue({ image: base64 }); // Stocker l'image encodée dans le formulaire
+        this.bookForm.patchValue({ images: [{dataBase64 : base64 }] }); // Stocker l'image encodée dans le formulaire
       });
     }
   }
@@ -94,7 +90,7 @@ export class BookFormComponent implements OnInit {
 
 
   private createNewBook(datas: Book): void{
-    console.log(datas);
+
    this.bookService.createBook(datas);
   }
   private updateBook(datas: Book){

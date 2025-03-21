@@ -5,7 +5,8 @@ export class Book {
     public title: string,
     public description: string,
     public author: string,
-    public isbn: number){
+    public isbn: number,
+    public images: string[]){
 
   }
 
