@@ -27,7 +27,7 @@ Relation :<br>
 
 Book -> Author : ManytoOne 
 
------------------------------------------------------
+
 
 
 ### Front
@@ -43,3 +43,18 @@ Creation des maquettes , intégration
 6 : En tant qu'administrateur de bibliothèque, je dois pouvoir rechercher des clients, puis les modifier ou les supprimer de la liste qui s'affiche.<br>
 7 : En tant qu'administrateur de bibliothèque, je dois pouvoir ajouter un nouveau prêt, afin de faire le lien entre un livre emprunté à la bibliothèque et son emprunteur (client enregistré).<br>
 8 : En tant qu'administrateur de bibliothèque, je dois pouvoir rechercher la liste des prêts d'un client par email, et la liste des prêts effectués jusqu'à une certaine date, afin de voir l'historique.<br>
+
+-----------------------------------------------------
+
+### 🛠 Installation
+1. Backend <br>
+
+Assurez-vous d’avoir Java 17 et Maven installés <br>
+Clonez le projet : git clone https://github.com/agnes-guillet21/library.git <br>
+Démarrez l’application Spring Boot : mvn spring-boot:run <br>
+
+2. Frontend <br>
+
+Assurez-vous d’avoir Node.js installé <br>
+Installez les dépendances : npm install <br>
+Démarrez Angular : ng serve <br>
