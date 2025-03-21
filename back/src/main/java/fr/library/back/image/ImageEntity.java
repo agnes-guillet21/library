@@ -13,18 +13,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ImageEntity {
-
+/* supprimer colonne pr ne garder que l id et le content*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "title")
-    private String fileName;
 
     @Column(name = "content")
     private String dataBase64;
     
-    @Column(name = "extension")
-    private String fileType;
+
 
 
 }

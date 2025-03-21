@@ -12,9 +12,7 @@ import lombok.Setter;
 public class ImageDto {
 
     private Integer id;
-    private String fileName;
     private String dataBase64;
-    private String fileType;
 
 
 

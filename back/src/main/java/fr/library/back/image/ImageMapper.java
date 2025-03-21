@@ -14,9 +14,7 @@ public class ImageMapper {
     public static ImageDto map(ImageEntity imageEntity) {
         ImageDto imageDto = new ImageDto();
         imageDto.setId(imageEntity.getId());
-        imageDto.setFileName(imageEntity.getFileName());
         imageDto.setDataBase64(imageEntity.getDataBase64());
-        imageDto.setFileType(imageEntity.getFileType());
 
         return imageDto;
     }
@@ -25,9 +23,7 @@ public class ImageMapper {
     public static ImageEntity map(ImageDto imageDto){
         ImageEntity imageEntity = new ImageEntity();
         imageEntity.setId(imageDto.getId());
-        imageEntity.setFileName(imageDto.getFileName());
         imageEntity.setDataBase64(imageDto.getDataBase64());
-        imageEntity.setFileType(imageDto.getFileType());
 
         return imageEntity;
     }
@@ -40,7 +36,7 @@ public class ImageMapper {
     public static List<ImageEntity> mapDtos(List<ImageDto> imageDtos) {
         List<ImageEntity> imageEntities = new ArrayList<>();
         for (ImageDto imageDto : imageDtos) {
-            imageEntities.remove(ImageMapper.map(imageDto));
+            imageEntities.add(ImageMapper.map(imageDto));
         }
         return imageEntities;
     }
