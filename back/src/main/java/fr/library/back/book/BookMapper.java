@@ -38,9 +38,8 @@ public class BookMapper {
 //       bookEntity.setAuthor(bookDto.getAuthor());
         bookEntity.setIsbn(bookDto.getIsbn());
         if (bookDto.getImages() != null){
-           imageEntities = ImageMapper.mapDtos(bookDto.getImages()); // faire appel a image mapper pr recuperer des images entity
+            bookEntity.setImages(ImageMapper.mapDtos(bookDto.getImages()));
         }
-        bookEntity .setImages(imageEntities);
     return bookEntity;
     }
 
