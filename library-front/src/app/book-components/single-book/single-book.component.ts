@@ -42,6 +42,7 @@ export class SingleBookComponent implements OnInit {
     });
 
   }
-  // Desouscrire a  l observable
+
+  //  TODO: Desouscrire a  l observable
 
 }
