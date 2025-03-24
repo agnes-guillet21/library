@@ -2,7 +2,7 @@
   @for(bookElement of (books$| async) ; track bookElement.title) {
     <app-book [book]="bookElement"></app-book>
    } @empty {
-  <span>Il n'y a pas de livres enregistrés</span>
+    <span>Il n'y a pas de livres enregistrés</span>
   }
 
 </div>
