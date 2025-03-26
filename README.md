@@ -3,7 +3,7 @@ Un outil d'administration de bibliothèque permettant de gérer les livres, les 
 Review fait par un lead Tech Java
 
 ### 🚀 Technologies utilisées
-Back : Spring Boot / Front : Angular 17 / BDD : PostgreSql
+Back : Spring Boot Java 17 / Front : Angular 17 / BDD : PostgreSql
 
 
 -----------------------------------------------------
