@@ -1,6 +1,7 @@
 package fr.library.back.book;
 
 import fr.library.back.exception.LibraryException;
+import fr.library.back.image.ImageEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.awt.print.Book;
 import java.util.Optional;
 
 class BookServiceTest {
@@ -31,7 +31,7 @@ class BookServiceTest {
     @Test
     void findByIdTest() throws LibraryException {
         //given
-        Mockito.when(bookDao.findById(Mockito.anyInt())).thenReturn(Optional.of(new BookEntity(42, "test", "test", "test", 55)));
+        Mockito.when(bookDao.findById(Mockito.anyInt())).thenReturn(Optional.of(new BookEntity(42, "test", "test", "test", 55, new ImageEntity())));
         //when
         var result = this.bookService.findBookById(42);
 
@@ -42,7 +42,7 @@ class BookServiceTest {
     }
 
 //
-//    //test findbookbytitle
+//    //test findbookbyIsbn
 //    @Test
 //    void findByIsbnTest() throws LibraryException{
 //        //given
@@ -50,6 +50,20 @@ class BookServiceTest {
 //
 //        //when
 //        var result = this.bookService.findBookByIsbn(1);
+//
+//        //then
+//        Assertions.assertNotNull(result);
+//        Assertions.assertEquals(1, result.getId(), result.getTitle());
+//    }
+//
+//    //test findbookbyIsbn
+//    @Test
+//    void findByIsbnTitle() throws LibraryException{
+//        //given
+//        Mockito.when(bookDao.findByTitle(Mockito.anyString()));
+//
+//        //when
+//        var result = this.bookService.findBookByTitle("rebelle");
 //
 //        //then
 //        Assertions.assertNotNull(result);

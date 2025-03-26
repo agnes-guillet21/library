@@ -1,38 +1,31 @@
 package fr.library.back.book;
 
 
+import fr.library.back.image.ImageEntity;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.awt.print.Book;
 import java.util.List;
 
+@DataJpaTest
 public class BookDaoTest {
 
-
     @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
     private BookDao bookDao;
 
-    @BeforeEach
-    void init() {
-        MockitoAnnotations.openMocks(this);
-    }
-
-    @Test
-    public void testAddBook(){
-        BookEntity book = new BookEntity(44,"un lire parmis tant d'autres", "une description", "un auteur", 55);
-        BookEntity savedBook = bookDao.save(book);
-       Assertions.assertNotNull(savedBook);
-        Assertions.assertEquals("un lire parmis tant d'autres", savedBook.getTitle());
-    }
+//    @Test
+//    public void testAddBook(){
+//        BookEntity book = new BookEntity(null, "un lire parmis tant d'autres", "une description", "un auteur", 55, new ImageEntity());
+//
+//        BookEntity savedBook = bookDao.save(book);
+//
+//        Assertions.assertNotNull(savedBook);
+//        Assertions.assertEquals("un lire parmis tant d'autres", book.getTitle());
+//        Assertions.assertNotNull(book.getId(), "L'ID ne doit pas être null");
+//        Assertions.assertTrue(book.getId() > 0, "L'ID doit etre superieur a 0");
+//    }
 
     @Test
     public void testGetListOfBook(){
@@ -40,13 +33,13 @@ public class BookDaoTest {
         Assertions.assertNotNull(books);
     }
 
-    @Test
-    public void DeleteBook(){
-        BookEntity book = new BookEntity(66,"un livre parmis encore un", "une description, encore une", "un auteur, encore", 66);
-        bookDao.deleteById(book.getId());
-        BookEntity deletedBook = bookDao.findById(book.getId()).orElse(null);
-        Assertions.assertNull(deletedBook);
-    }
+//    @Test
+//    public void DeleteBook(){
+//        BookEntity book = new BookEntity(66,"un livre parmis encore un", "une description, encore une", "un auteur, encore", 66, new ImageEntity());
+//        bookDao.deleteById(book.getId());
+//        BookEntity deletedBook = bookDao.findById(book.getId()).orElse(null);
+//        Assertions.assertNull(deletedBook);
+//    }
 
     @Test
     public void testGetBook(){

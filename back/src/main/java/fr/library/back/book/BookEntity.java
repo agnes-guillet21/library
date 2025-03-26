@@ -1,20 +1,16 @@
 
 package fr.library.back.book;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import fr.library.back.author.AuthorEntity;
+import fr.library.back.image.ImageEntity;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "book")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class BookEntity {
 
     @Id
@@ -22,7 +18,15 @@ public class BookEntity {
     private Integer id;
     private String title;
     private String description;
-    private String author;
     private Integer isbn;
 
+    @ManyToMany
+    @JoinTable(name = "book_image",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "image_id"))
+    List<ImageEntity> images ;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private AuthorEntity author;
 }
