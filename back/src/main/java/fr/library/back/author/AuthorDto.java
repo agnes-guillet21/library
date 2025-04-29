@@ -1,7 +1,6 @@
 package fr.library.back.author;
 
 import fr.library.back.image.ImageDto;
-import fr.library.back.image.ImageEntity;
 import lombok.*;
 
 @Data

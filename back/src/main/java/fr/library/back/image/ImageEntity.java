@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ImageEntity {
-/* supprimer colonne pr ne garder que l id et le content*/
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
