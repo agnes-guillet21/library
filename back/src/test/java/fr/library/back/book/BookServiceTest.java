@@ -31,7 +31,7 @@ class BookServiceTest {
     @Test
     void findByIdTest() throws LibraryException {
         //given
-        Mockito.when(bookDao.findById(Mockito.anyInt())).thenReturn(Optional.of(new BookEntity(42, "test", "test", "test", 55, new ImageEntity())));
+      //  Mockito.when(bookDao.findById(Mockito.anyInt())).thenReturn(Optional.of(new BookEntity(42, "test", "test", "test", 55, new ImageEntity())));
         //when
         var result = this.bookService.findBookById(42);
 

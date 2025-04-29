@@ -72,6 +72,7 @@ public class BookRestController implements LibraryRestController<BookDto> {
         try{
             result = bookService.createBook(bookDto);
         }catch (Exception e){
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(result, HttpStatus.OK);

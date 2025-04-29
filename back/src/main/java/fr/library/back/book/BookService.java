@@ -3,6 +3,7 @@ package fr.library.back.book;
 import fr.library.back.author.AuthorEntity;
 import fr.library.back.exception.LibraryException;
 import fr.library.back.image.ImageDto;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,7 +30,6 @@ public class BookService {
      * use mapper class
      */
     public List<BookDto> getBooks() {
-        List<BookDto> bookDtos = new ArrayList<>();
         List<BookEntity> bookEntities = bookDao.findAll();
         return BookMapper.mapEntities(bookEntities);
     }
@@ -45,12 +45,18 @@ public class BookService {
     }
 
     /**
-     *
      * @param id
-     * @return : void
+     * @throws LibraryException
      */
-    public void deleteBook(Integer id) {
-        bookDao.deleteById(id);
+    public void deleteBook(Integer id) throws LibraryException {
+        try {
+            if (!bookDao.existsById(id)) {
+                throw new LibraryException("Livre avec l'ID " + id + " non trouvé");
+            }
+            bookDao.deleteById(id);
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("Erreur lors de la suppression du livre ", e);
+        }
     }
 
     /**
@@ -58,16 +64,14 @@ public class BookService {
      * @return BookDto : object for front
      */
     public BookDto createBook(BookDto bookDto) {
-        /* tester l'ajout d'un livre avec une image */
-        /*A supprimer et faire la logique pour setter l auteur */
-        authorEntity =  new AuthorEntity(1, "chattam","maxime","francaise",null);
+// requete pour aller chercher tous les auteurs
         BookEntity bookEntity = bookDao.save(BookMapper.map(bookDto));
         bookEntity.setAuthor(authorEntity);
         return BookMapper.map(bookEntity);
     }
 
    public BookDto updateBook(BookDto bookDto) throws LibraryException {
-       BookEntity bookEntity ;
+       BookEntity bookEntity;
         try{
          bookEntity = bookDao.save(BookMapper.map(bookDto));
         }catch (NoSuchElementException e){

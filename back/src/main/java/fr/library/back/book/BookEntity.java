@@ -20,7 +20,7 @@ public class BookEntity {
     private String description;
     private Integer isbn;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "book_image",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "image_id"))

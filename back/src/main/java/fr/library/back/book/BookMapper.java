@@ -1,5 +1,8 @@
 package fr.library.back.book;
 
+import fr.library.back.author.AuthorDto;
+import fr.library.back.author.AuthorEntity;
+import fr.library.back.author.AuthorMapper;
 import fr.library.back.image.ImageDto;
 import fr.library.back.image.ImageEntity;
 import fr.library.back.image.ImageMapper;
@@ -17,15 +20,19 @@ public class BookMapper {
         bookDto.setId(bookEntity.getId());
         bookDto.setTitle(bookEntity.getTitle());
         bookDto.setDescription(bookEntity.getDescription());
-//        bookDto.setAuthor(bookEntity.getAuthor());
         bookDto.setIsbn(bookEntity.getIsbn());
+        if(bookEntity.getAuthor() != null){
+            AuthorEntity authorEntity = bookEntity.getAuthor();
+            AuthorDto authorDto = AuthorMapper.map(authorEntity);
+            bookDto.setAuthor(authorDto);
+        }
         if (bookEntity.getImages() != null) {
             for (ImageEntity imageEntity : bookEntity.getImages()) {
                 ImageDto imageDto = ImageMapper.map(imageEntity);
                 imageDtos.add(imageDto);
             }
+            bookDto.setImages(imageDtos);
         }
-        bookDto.setImages(imageDtos);
         return bookDto;
     }
 
@@ -38,7 +45,7 @@ public class BookMapper {
 //       bookEntity.setAuthor(bookDto.getAuthor());
         bookEntity.setIsbn(bookDto.getIsbn());
         if (bookDto.getImages() != null){
-            bookEntity.setImages(ImageMapper.mapDtos(bookDto.getImages()));
+           bookEntity.setImages(ImageMapper.mapDtos(bookDto.getImages()));
         }
     return bookEntity;
     }
@@ -59,6 +66,5 @@ public class BookMapper {
 //        return bookEntities;
 //    }
 
-    /**TODO faire un mapper pour remove tous les livres
-     * */
+    /**TODO faire un mapper pour remove tous les livres */
 }

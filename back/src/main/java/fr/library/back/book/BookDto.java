@@ -1,5 +1,6 @@
 package fr.library.back.book;
 
+import fr.library.back.author.AuthorDto;
 import fr.library.back.image.ImageDto;
 import fr.library.back.image.ImageEntity;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class BookDto {
     private Integer id;
     private String title;
     private String description;
-    private String author;
+    private AuthorDto author;
     private Integer isbn;
     private List<ImageDto> images;
 
