@@ -6,6 +6,7 @@ import fr.library.back.image.ImageEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -19,6 +20,7 @@ public class BookEntity {
     private String title;
     private String description;
     private Integer isbn;
+    private Date addDate;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "book_image",

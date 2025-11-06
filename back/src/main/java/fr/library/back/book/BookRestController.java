@@ -33,6 +33,22 @@ public class BookRestController implements LibraryRestController<BookDto> {
         return new ResponseEntity<Iterable<BookDto>>(allBooks, HttpStatus.OK);
     }
 
+    /**
+     * Read: get books order by date asc
+     * Request for the home page to display last books added
+     * @return An iterable object of book
+     *
+    */
+    @GetMapping("/last")
+    public ResponseEntity<Iterable<BookDto>> getBookOrderByDateDesc(){
+        List<BookDto> booksOrderByDateAsc = new ArrayList<>();
+        try {
+            booksOrderByDateAsc = bookService.findBooksOrderByDateDesc();
+        }catch (Exception e){
+            return new ResponseEntity<Iterable<BookDto>>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<Iterable<BookDto>>(booksOrderByDateAsc, HttpStatus.OK);
+    }
 
     /**
      * Delete All Book

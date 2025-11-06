@@ -37,6 +37,6 @@ build/
 
 # OTHER
 .gradle
-
+.env
 
 #

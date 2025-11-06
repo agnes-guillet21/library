@@ -115,4 +115,10 @@ public class BookService {
         return bookDto;
 
     }
+
+    public List<BookDto> findBooksOrderByDateDesc(){
+       List<BookEntity> bookEntity = bookDao.findOrderByAddDateDesc();
+        return  BookMapper.mapEntities(bookEntity);
+
+    }
 }

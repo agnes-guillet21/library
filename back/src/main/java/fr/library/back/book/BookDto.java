@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +22,10 @@ public class BookDto {
     private String title;
     private String description;
     private AuthorDto author;
+    private String authorFirstName;
+    private String authorLastName;
     private Integer isbn;
     private List<ImageDto> images;
+    private Date addDate;
 
 }

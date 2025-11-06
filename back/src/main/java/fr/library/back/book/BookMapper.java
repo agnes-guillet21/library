@@ -21,10 +21,12 @@ public class BookMapper {
         bookDto.setTitle(bookEntity.getTitle());
         bookDto.setDescription(bookEntity.getDescription());
         bookDto.setIsbn(bookEntity.getIsbn());
+        bookDto.setAddDate(bookEntity.getAddDate());
         if(bookEntity.getAuthor() != null){
             AuthorEntity authorEntity = bookEntity.getAuthor();
             AuthorDto authorDto = AuthorMapper.map(authorEntity);
-            bookDto.setAuthor(authorDto);
+            bookDto.setAuthorFirstName(authorDto.getFirstName());
+            bookDto.setAuthorLastName(authorDto.getLastName());
         }
         if (bookEntity.getImages() != null) {
             for (ImageEntity imageEntity : bookEntity.getImages()) {
@@ -44,6 +46,7 @@ public class BookMapper {
         bookEntity.setDescription(bookDto.getDescription());
 //       bookEntity.setAuthor(bookDto.getAuthor());
         bookEntity.setIsbn(bookDto.getIsbn());
+        bookEntity.setAddDate(bookDto.getAddDate());
         if (bookDto.getImages() != null){
            bookEntity.setImages(ImageMapper.mapDtos(bookDto.getImages()));
         }

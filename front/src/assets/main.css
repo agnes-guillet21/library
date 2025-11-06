@@ -1,0 +1,64 @@
+@import './base.css';
+@import './book.css';
+
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--color-text);
+  font-family: var(--font-base);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+header {
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
+  padding: 1rem 2rem;
+  text-align: center;
+  border-bottom: 3px solid var(--color-accent);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+
+
+/* 📄 Main content */
+main {
+  flex: 1;
+  padding: 2rem;
+  width: auto;
+margin: 10px;
+}
+
+/* 📘 Footer */
+footer {
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
+  text-align: center;
+  padding: 1rem;
+  border-top: 3px solid var(--color-accent);
+  font-size: 0.9rem;
+}
+
+/* 🔗 Liens globaux */
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-secondary);
+  text-decoration: underline;
+
+}
